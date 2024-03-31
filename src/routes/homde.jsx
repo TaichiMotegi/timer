@@ -29,7 +29,7 @@ function Home() {
 }
 export default Home;
 
-function SighnInButton() {
+export function SighnInButton() {
   const sighInWithGoogel = () => {
     const auth = getAuth();
     signInWithPopup(auth, provider)

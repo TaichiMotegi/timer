@@ -113,7 +113,7 @@ function Chart() {
       <div className="flex flex-col items-center justify-evenly h-screen">
         <NavButton flag={true} />
         <SubButton />
-        <div className="mt-44 fixed top-5 w-10/12 lg:w-4/12 mt-44">
+        <div className="mt-44 fixed top-5 w-10/12 lg:w-4/12">
           <h1 className="text-center text-2xl font-mono font-bold md:text-4xl">
             TOTAL : {totalCommas}円
           </h1>

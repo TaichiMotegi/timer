@@ -72,7 +72,7 @@ function Result() {
   }, []);
 
   //金額の合計を計算　改善の余地あり
-  let total = 0
+  let total = 0;
   posts.map((post) => (total += Number(post.money)));
   // カンマ区切りの文字列に変換
   const totalCommas = total.toLocaleString();
@@ -87,7 +87,7 @@ function Result() {
         <div className="flex flex-col items-center">
           <NavButton flag={true} />
           <SubButton />
-          <div className="mt-44 fixed top-5 w-10/12 lg:w-4/12 mt-44">
+          <div className="mt-44 fixed top-5 w-10/12 lg:w-4/12">
             <div className="overflow-y-auto h-[calc(100vh-210px)]">
               <div className="mb-5 text-center text-2xl font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
                 {totalTime}
@@ -137,7 +137,7 @@ function Result() {
         <div className="flex flex-col items-center">
           <NavButton flag={true} />
           <SubButton />
-          <div className="mt-44 fixed top-5 w-10/12 lg:w-auto mt-44">
+          <div className="mt-44 fixed top-5 w-10/12 lg:w-auto">
             <div className="py-2 mb-5 text-center text-2xl font-mono font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
               {totalTime} ⇄ {totalCommas}円
             </div>
