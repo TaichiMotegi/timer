@@ -6,6 +6,7 @@ import { UserIdContext } from "../components/providers/UserIdContext";
 import { NavButton } from "../components/navButton";
 import { SubButton } from "../components/subButton";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 function formatTime(time) {
   let eachTime = "";
@@ -36,7 +37,6 @@ function calculateTotalTime(timeStrings) {
 
 function Result() {
   const [posts, setPosts] = useState([]);
-  // 現在のウィンドウの幅をstateとして管理
   const contextValue = useContext(UserIdContext);
   const uid = contextValue.userId;
 
@@ -80,7 +80,7 @@ function Result() {
   let timeStrings = [];
   posts.map((post) => timeStrings.push(post.studyHours));
   const totalTime = calculateTotalTime(timeStrings);
-
+  // console.dir(posts);
   if (windowWidth < 767) {
     return (
       <div>
@@ -109,7 +109,9 @@ function Result() {
                         rowSpan="2"
                         className="px-2 align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
                       >
-                        {post.category}
+                        <Link to="/edit" state={{ category: post.category }}>
+                          {post.category}
+                        </Link>
                       </td>
                       <td
                         rowSpan="2"
@@ -153,7 +155,9 @@ function Result() {
                         rowSpan="2"
                         className="px-2 align-middle border border-solid border-blueGray-100 py-3 text-xs border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
                       >
-                        {post.category}
+                        <Link to="/edit" state={{ category: post.category }}>
+                          {post.category}
+                        </Link>
                       </td>
                       <td
                         rowSpan="2"

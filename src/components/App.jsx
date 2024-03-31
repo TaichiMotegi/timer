@@ -3,6 +3,7 @@ import Main from "../routes/main";
 import Result from "../routes/result";
 import NoMatch from "../routes/noMatch";
 import Chart from "../routes/chart";
+import Edit from "../routes/edit";
 import { Routes, Route } from "react-router-dom";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/timer" element={<Main />} />
             <Route path="/result" element={<Result />} />
             <Route path="/chart" element={<Chart />} />
+            <Route path="/edit" element={<Edit />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </>
