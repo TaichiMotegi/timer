@@ -1,0 +1,45 @@
+img {
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+}
+
+/* 円グラフのラベルテキスト
+----------------------------------------------------------------------*/
+.recharts-legend-item-text {
+  color: black !important;
+  font-weight: 500;
+}
+/*----------------------------------------------------------------------*/
+
+button {
+  margin-top: 14px;
+  padding: 7px 40px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 5px 10px #626262;
+  cursor: pointer;
+  background-color: #cf9b48;
+  color: white;
+}
+
+@media (max-height: 30rem) {
+  .home-user-info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 150px;
+    overflow-y: auto;
+  }
+  .timer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 150px;
+    overflow-y: auto;
+  }
+}
