@@ -11,7 +11,7 @@ function Edit() {
   const uid = contextValue.userId;
   return (
     <div>
-      <div className="flex flex-col items-center justify-evenly font-bold text-4xl h-screen">
+      <div className="flex flex-col items-center justify-evenly font-bold text-xl h-screen md:text-4xl">
         <NavButton flag={true} />
         Category：{category}
         <button
