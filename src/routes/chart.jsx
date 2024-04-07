@@ -115,7 +115,7 @@ function Chart() {
         <SubButton />
         <div className="mt-44 fixed top-5 w-10/12 lg:w-4/12">
           <h1 className="text-center text-2xl font-mono font-bold md:text-4xl">
-            TOTAL : {totalCommas}円
+            TOTAL : {totalCommas !== 0 ? totalCommas : ""}円
           </h1>
           <div className="overflow-y-auto h-[calc(100vh-200px)]">
             <ResponsiveContainer width="100%" height={300}>

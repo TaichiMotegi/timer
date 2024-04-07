@@ -90,13 +90,13 @@ function Result() {
           <div className="mt-44 fixed top-5 w-10/12 lg:w-4/12">
             <div className="overflow-y-auto h-[calc(100vh-210px)]">
               <div className="mb-5 text-center text-2xl font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
-                {totalTime}
+                {totalTime !== 0 ? totalTime : ""}
               </div>
               <div className="mb-5 text-center text-4xl font-mono font-bold whitespace-nowrap md:text-5xl">
                 ⇅
               </div>
               <div className="mb-5 text-center text-2xl font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
-                {totalCommas}円
+                {totalCommas !== 0 ? totalCommas : ""}円
               </div>
               <table className="items-center w-full">
                 {posts.map((post) => (
@@ -141,7 +141,8 @@ function Result() {
           <SubButton />
           <div className="mt-44 fixed top-5 w-10/12 lg:w-auto">
             <div className="py-2 mb-5 text-center text-2xl font-mono font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
-              {totalTime} ⇄ {totalCommas}円
+              {totalTime !== 0 ? totalTime : ""} ⇄
+              {totalCommas !== 0 ? totalCommas : ""}円
             </div>
             <div className="overflow-y-auto h-[calc(100vh-300px)]">
               <table className="items-center w-full">
