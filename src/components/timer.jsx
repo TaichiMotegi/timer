@@ -65,7 +65,7 @@ export const MyStopwatch = () => {
           </div>
           <div className="text-5xl font-mono font-bold mb-0">⇅</div>
           <div className="text-5xl font-mono font-bold mb-0">
-            {(minutes === 0 ? sum + 0 : minutes * 150 + sum).toLocaleString()}円
+            ¥{(minutes === 0 ? sum + 0 : minutes * 150 + sum).toLocaleString()}
           </div>
           <div className="flex justify-center">
             <button
@@ -107,9 +107,8 @@ export const MyStopwatch = () => {
             <span>{seconds < 10 ? "0" + seconds : seconds}</span>
             <span>
               {" "}
-              ⇄{" "}
+              ⇄ ¥
               {(minutes === 0 ? sum + 0 : minutes * 150 + sum).toLocaleString()}
-              円
             </span>
           </div>
           <div className="flex justify-center">

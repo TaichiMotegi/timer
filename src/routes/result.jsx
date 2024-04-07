@@ -39,6 +39,14 @@ function Result() {
   const [posts, setPosts] = useState([]);
   const contextValue = useContext(UserIdContext);
   const uid = contextValue.userId;
+  // 現在のウィンドウの幅をstateとして管理
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // ウィンドウの幅が変更された場合にstateを更新する
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  const [totalCommas, setTotalCommas] = useState("");
+  const [totalTime, setTotalTime] = useState("");
 
   useEffect(() => {
     //データ取得
@@ -53,33 +61,27 @@ function Result() {
     onSnapshot(q, (post) => {
       setPosts(post.docs.map((doc) => ({ ...doc.data() })));
     });
-  }, [uid]);
 
-  // 現在のウィンドウの幅をstateとして管理
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  // ウィンドウの幅が変更された場合にstateを更新する
-  const handleWindowResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-  // コンポーネントがマウントされたときに、ウィンドウリサイズのイベントリスナーを追加する
-  useEffect(() => {
+    // コンポーネントがマウントされたときに、ウィンドウリサイズのイベントリスナーを追加する
     window.addEventListener("resize", handleWindowResize);
+
+    //金額の合計を計算　改善の余地あり
+    let total = 0;
+    let timeStrings = [];
+    posts.forEach((post) => {
+      total += Number(post.money);
+      timeStrings.push(post.studyHours);
+    });
+    // カンマ区切りの文字列に変換
+    setTotalCommas(total.toLocaleString());
+    setTotalTime(calculateTotalTime(timeStrings));
 
     // コンポーネントがアンマウントされるときにイベントリスナーを削除する
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, []);
+  }, [uid, posts]);
 
-  //金額の合計を計算　改善の余地あり
-  let total = 0;
-  posts.map((post) => (total += Number(post.money)));
-  // カンマ区切りの文字列に変換
-  const totalCommas = total.toLocaleString();
-
-  let timeStrings = [];
-  posts.map((post) => timeStrings.push(post.studyHours));
-  const totalTime = calculateTotalTime(timeStrings);
   // console.dir(posts);
   if (windowWidth < 767) {
     return (
@@ -90,13 +92,13 @@ function Result() {
           <div className="mt-44 fixed top-5 w-10/12 lg:w-4/12">
             <div className="overflow-y-auto h-[calc(100vh-210px)]">
               <div className="mb-5 text-center text-2xl font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
-                {totalTime !== 0 ? totalTime : ""}
+                {totalTime}
               </div>
               <div className="mb-5 text-center text-4xl font-mono font-bold whitespace-nowrap md:text-5xl">
                 ⇅
               </div>
               <div className="mb-5 text-center text-2xl font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
-                {totalCommas !== 0 ? totalCommas : ""}円
+                ¥{totalCommas}
               </div>
               <table className="items-center w-full">
                 {posts.map((post) => (
@@ -117,7 +119,7 @@ function Result() {
                         rowSpan="2"
                         className="px-2 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
                       >
-                        {post.money.toLocaleString()}円
+                        ¥{post.money.toLocaleString()}
                       </td>
                     </tr>
                     <tr>
@@ -141,8 +143,7 @@ function Result() {
           <SubButton />
           <div className="mt-44 fixed top-5 w-10/12 lg:w-auto">
             <div className="py-2 mb-5 text-center text-2xl font-mono font-bold overflow-x-auto whitespace-nowrap md:text-4xl">
-              {totalTime !== 0 ? totalTime : ""} ⇄
-              {totalCommas !== 0 ? totalCommas : ""}円
+              {totalTime} ⇄ ¥{totalCommas}
             </div>
             <div className="overflow-y-auto h-[calc(100vh-300px)]">
               <table className="items-center w-full">
@@ -164,7 +165,7 @@ function Result() {
                         rowSpan="2"
                         className="px-2 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
                       >
-                        {post.money.toLocaleString()}円
+                        ¥{post.money.toLocaleString()}
                       </td>
                     </tr>
                     <tr>
