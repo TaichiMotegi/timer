@@ -58,19 +58,13 @@ export const MyStopwatch = () => {
     return (
       <div class="timer">
         <div className="flex flex-col items-center">
-          <h1 className="font-bold">Study Hours to Money</h1>
-          <p className="font-bold mb-4 md:mb-0">
-            Stopwatch to Visualize Your Hard Work
-          </p>
-          <div className="text-2xl font-mono font-bold mb-4 md:text-7xl mb-0">
+          <div className="text-5xl font-mono font-bold mb-0">
             <span>{hours < 10 ? "0" + hours : hours}</span>:
             <span>{minutes < 10 ? "0" + minutes : minutes}</span>:
             <span>{seconds < 10 ? "0" + seconds : seconds}</span>
           </div>
-          <div className="text-4xl font-mono font-bold mb-4 md:text-7xl mb-0">
-            ⇅
-          </div>
-          <div className="text-2xl font-mono font-bold mb-4 md:text-7xl mb-0">
+          <div className="text-5xl font-mono font-bold mb-0">⇅</div>
+          <div className="text-5xl font-mono font-bold mb-0">
             {(minutes === 0 ? sum + 0 : minutes * 150 + sum).toLocaleString()}円
           </div>
           <div className="flex justify-center">
@@ -101,11 +95,13 @@ export const MyStopwatch = () => {
     return (
       <div>
         <div className="flex flex-col items-center">
-          <h1 className="font-bold mt-10 md: mt-0">Study Hours to Money</h1>
-          <p className="font-bold mb-4 md:mb-0">
-            Stopwatch to visualize your hard work
-          </p>
-          <div className="text-2xl font-mono font-bold mb-4 md:text-7xl mb-0">
+          {/* <h1 className="font-bold mt-10 md: mt-0">
+            Convert Study Time into Money
+          </h1> */}
+          {/* <p className="font-bold mb-4 md:mb-0">
+            Timer visualizes your hard work!
+          </p> */}
+          <div className="text-7xl font-mono font-bold mb-0">
             <span>{hours < 10 ? "0" + hours : hours}</span>:
             <span>{minutes < 10 ? "0" + minutes : minutes}</span>:
             <span>{seconds < 10 ? "0" + seconds : seconds}</span>
